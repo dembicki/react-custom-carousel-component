@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/dembicki/react-custom-carousel-component/issues"
   },
-  "homepage": "https://github.com/dembicki/react-custom-carousel-component#readme"
+  "homepage": "https://github.com/dembicki/react-custom-carousel-component#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.3.1",
+    "webpack": "^5.26.3",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "webpack-cli": "^4.5.0"
+  }
 }
