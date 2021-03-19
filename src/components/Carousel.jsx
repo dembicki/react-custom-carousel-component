@@ -1,9 +1,14 @@
 import React from "react";
+import styled from "styled-components";
 
 export default function Carousel() {
   return (
     <div>
-      <h1>This is carousel component</h1>
+      <Heading>This is carousel component</Heading>
     </div>
   );
 }
+
+const Heading = styled.h1`
+  color: blue;
+`;
