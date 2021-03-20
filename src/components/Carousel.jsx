@@ -78,6 +78,10 @@ const Item = styled.div`
   align-items: center;
   min-width: 100%;
   transition: 0.5s ease-in-out;
+  > * {
+    max-width: 100%;
+    max-height: 90vh;
+  }
 `;
 
 const Prev = styled.button`

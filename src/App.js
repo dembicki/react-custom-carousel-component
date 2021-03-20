@@ -13,14 +13,15 @@ const images = [{
 },
 {
   name: "image3",
-  imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpPVyc4LETd6GWTNZWJCuiBWoEI3w5yHZeoA&usqp=CAU",
+  imageURL: "https://iknurow.pl/wp-content/uploads/mt-sample-background.jpg",
 }];
 
 const App = () => (
   <>
     <Carousel dots arrows >
-      <p>xd</p>
-      <p>XD</p>
+      {images?.map(({name, imageURL}) =>(
+        <img src={imageURL} alt={name} />
+      ))}
     </Carousel>
   </>
 );
