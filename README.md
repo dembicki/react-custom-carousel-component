@@ -54,6 +54,13 @@ const App = () => (
 
 ```
 
+## Features:
+
+- Responsive
+- Supports any type of data
+- Using pure react.js
+- Supports touch swipes on mobile
+
 ## Parameters
 
 ### Show arrows (default: false)
