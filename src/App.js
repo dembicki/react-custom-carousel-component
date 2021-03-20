@@ -9,7 +9,7 @@ const images = [{
 },
 {
   name: "image2",
-  imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpPVyc4LETd6GWTNZWJCuiBWoEI3w5yHZeoA&usqp=CAU",
+  imageURL: "https://images.unsplash.com/photo-1612831661941-254341b885e9?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=625&q=80",
 },
 {
   name: "image3",

@@ -4,6 +4,8 @@ import styled from "styled-components";
 export default function Carousel({ dots, arrows, children }) {
   const [xPos, setXPos] = useState(0);
   const [currSlide, setCurrSlide] = useState(0);
+  const [touchStart, setTouchStart] = React.useState(0);
+  const [touchEnd, setTouchEnd] = React.useState(0);
   const items = children;
 
   useEffect(() => {
@@ -22,11 +24,35 @@ export default function Carousel({ dots, arrows, children }) {
     setXPos(index * -100);
   };
 
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 150) {
+      goRight();
+    }
+
+    if (touchStart - touchEnd < -150) {
+      goLeft();
+    }
+  };
+
   return (
     <Wrapper>
       <ContentWrapper>
         {items?.map((item, index) => (
-          <Item key={index} style={{ transform: `translateX(${xPos}%)` }}>
+          <Item
+            key={index}
+            style={{ transform: `translateX(${xPos}%)` }}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             {item}
           </Item>
         ))}
@@ -77,7 +103,7 @@ const Item = styled.div`
   justify-content: center;
   align-items: center;
   min-width: 100%;
-  transition: 0.5s ease-in-out;
+  transition: 0.3s ease-in-out;
   > * {
     max-width: 100%;
     max-height: 90vh;
@@ -89,7 +115,7 @@ const Prev = styled.button`
   position: absolute;
   left: 0;
   top: 50%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
   border: none;
   width: 40px;
   height: 40px;
