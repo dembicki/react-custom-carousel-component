@@ -61,7 +61,7 @@ const App = () => (
 ```JSX
 <Carousel arrows={true} //default: false >
   <p>item1</p>
-  <p>item1</p>
+  <p>item2</p>
 </Carousel>
 ```
 
@@ -70,6 +70,6 @@ const App = () => (
 ```JSX
 <Carousel dots={true} //default: false >
   <p>item1</p>
-  <p>item1</p>
+  <p>item2</p>
 </Carousel>
 ```
