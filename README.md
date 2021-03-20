@@ -59,7 +59,7 @@ const App = () => (
 ### Show arrows (default: false)
 
 ```JSX
-<Carousel arrows={true} //default: false >
+<Carousel arrows={true} /* default: false */ >
   <p>item1</p>
   <p>item2</p>
 </Carousel>
@@ -68,7 +68,7 @@ const App = () => (
 ### Show dots navigation (default: false)
 
 ```JSX
-<Carousel dots={true} //default: false >
+<Carousel dots={true} /* default: false */ >
   <p>item1</p>
   <p>item2</p>
 </Carousel>
