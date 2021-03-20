@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-//TODO: Merge prev and next into one component
-
-export default function Carousel({ items, dots, arrows }) {
+export default function Carousel({ dots, arrows, children }) {
   const [xPos, setXPos] = useState(0);
   const [currSlide, setCurrSlide] = useState(0);
+  const items = children;
 
   useEffect(() => {
     setCurrSlide(Math.abs(xPos / 100));
@@ -26,13 +25,9 @@ export default function Carousel({ items, dots, arrows }) {
   return (
     <Wrapper>
       <ContentWrapper>
-        {items?.map(({ imageURL, name }, index) => (
-          <Item
-            key={index}
-            onChange={() => console.log("slide changed")}
-            style={{ transform: `translateX(${xPos}%)` }}
-          >
-            {name}
+        {items?.map((item, index) => (
+          <Item key={index} style={{ transform: `translateX(${xPos}%)` }}>
+            {item}
           </Item>
         ))}
         {arrows && (
@@ -44,14 +39,14 @@ export default function Carousel({ items, dots, arrows }) {
       </ContentWrapper>
       <Dots>
         {dots &&
-          items?.map((dot, index) => (
+          items?.map((i, index) => (
             <Dot key={index}>
               <input
                 id={`slide-${index + 1}`}
                 checked={currSlide === index ? true : false}
                 onChange={() => GoToSlide(index)}
                 type="radio"
-              ></input>
+              />
               <label htmlFor={`slide-${index + 1}`}></label>
             </Dot>
           ))}

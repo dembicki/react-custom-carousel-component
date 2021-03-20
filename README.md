@@ -28,13 +28,13 @@ const items = [
 
 
 const App = () => (
-  <div>
+  <>
     <Carousel
      items={items}
       dots
       arrows
     />
-  </div>
+  </>
 );
 
 ```
