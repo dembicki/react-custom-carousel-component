@@ -17,14 +17,18 @@ const items = [
     imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7-cgVNYcz5yJ-STMuanEypltgbfcyzvnh0Q&usqp=CAU",
   },
   {
-    name: "Four slide",
+    name: "Fourth slide",
     imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7-cgVNYcz5yJ-STMuanEypltgbfcyzvnh0Q&usqp=CAU",
   },
 ];
 
 const App = () => (
   <div>
-    <Carousel items={items} dots />
+    <Carousel
+     items={items}
+      dots 
+      arrows
+    />
   </div>
 );
 

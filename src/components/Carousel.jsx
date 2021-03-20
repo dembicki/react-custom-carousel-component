@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 //TODO: Merge prev and next into one component
 
-export default function Carousel({ items, dots }) {
+export default function Carousel({ items, dots, arrows }) {
   const [xPos, setXPos] = useState(0);
   const [currSlide, setCurrSlide] = useState(0);
+
+  useEffect(() => {
+    setCurrSlide(Math.abs(xPos / 100));
+  }, [xPos]);
 
   const goLeft = () => {
     xPos === 0 ? setXPos(-100 * (items.length - 1)) : setXPos(xPos + 100);
@@ -15,31 +19,40 @@ export default function Carousel({ items, dots }) {
     xPos === -100 * (items.length - 1) ? setXPos(0) : setXPos(xPos - 100);
   };
 
+  const GoToSlide = (index) => {
+    setXPos(index * -100);
+  };
+
   return (
     <Wrapper>
       <ContentWrapper>
-        {items?.map(({ imageURL, name }) => (
+        {items?.map(({ imageURL, name }, index) => (
           <Item
+            key={index}
             onChange={() => console.log("slide changed")}
             style={{ transform: `translateX(${xPos}%)` }}
           >
             {name}
           </Item>
         ))}
-        <Prev onClick={goLeft}>&larr;</Prev>
-        <Next onClick={goRight}>&rarr;</Next>
+        {arrows && (
+          <>
+            <Prev onClick={goLeft}>&larr;</Prev>
+            <Next onClick={goRight}>&rarr;</Next>
+          </>
+        )}
       </ContentWrapper>
       <Dots>
         {dots &&
           items?.map((dot, index) => (
-            <Dot>
-              <p>{Math.abs(xPos / 100)}</p>
+            <Dot key={index}>
               <input
                 id={`slide-${index + 1}`}
                 checked={currSlide === index ? true : false}
+                onChange={() => GoToSlide(index)}
                 type="radio"
               ></input>
-              <label for={`slide-${index + 1}`}></label>
+              <label htmlFor={`slide-${index + 1}`}></label>
             </Dot>
           ))}
       </Dots>
@@ -61,7 +74,6 @@ const ContentWrapper = styled.div`
 `;
 
 const Item = styled.div`
-  border: 1px solid red;
   text-align: center;
   width: 100%;
   height: 90vh;
