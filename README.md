@@ -63,7 +63,7 @@ const App = () => (
 
 ## Parameters
 
-### Show arrows (default: false)
+### Show arrows
 
 ```JSX
 <Carousel arrows={true} /* default: false */ >
@@ -72,7 +72,7 @@ const App = () => (
 </Carousel>
 ```
 
-### Show dots navigation (default: false)
+### Show dots navigation
 
 ```JSX
 <Carousel dots={true} /* default: false */ >
