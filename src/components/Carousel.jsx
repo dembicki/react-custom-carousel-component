@@ -1,43 +1,53 @@
 import React from "react";
 import styled from "styled-components";
 
-const items = [{}];
+//TODO: Merge prev and next into one component
 
-export default function Carousel() {
+export default function Carousel({ items }) {
   return (
     <Wrapper>
-      <Item>
-        <Image src="https://miro.medium.com/max/1838/1*MI686k5sDQrISBM6L8pf5A.jpeg" />
-      </Item>
-      <Item>
-      <Image src="https://miro.medium.com/max/1838/1*MI686k5sDQrISBM6L8pf5A.jpeg" />
-      </Item>
-      <Item>
-      <Image src="https://miro.medium.com/max/1838/1*MI686k5sDQrISBM6L8pf5A.jpeg" />
-      </Item>
-      </Wrapper>
+      <Prev>&larr;</Prev>
+      {items?.map(({ imageURL, name }, index) => (
+        <Item>
+          <Image src={imageURL} alt={name} />
+        </Item>
+      ))}
+      <Next>&rarr;</Next>
+    </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-margin: 1rem 3rem;
-border:1px solid green;
-border-radius: 10px;
-width: 1200px;
-display: flex;
-justify-content: center;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
 `;
 
+const Prev = styled.button`
+  position: relative;
+  left: 0;
+  top: 0;
+  border: 1px solid red;
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+`;
+
+const Next = styled.button``;
+
 const Item = styled.div`
-  /* border:1px solid red; */
-  flex: 0.3;
+  border: 1px solid red;
   text-align: center;
-  padding: 1rem;
+  min-width: 100%;
+  display: flex;
 `;
 
 const Image = styled.img`
-width: 100%;
-height: auto;
+  width: 100%;
+  height: 100%;
 `;
 
 const Heading = styled.h1`
