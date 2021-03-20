@@ -19,9 +19,9 @@ const items = [
 ];
 
 const App = () => (
-  <>
+  <div>
     <Carousel items={items} />
-  </>
+  </div>
 );
 
 ReactDOM.render(<App />, document.getElementById("root"));
