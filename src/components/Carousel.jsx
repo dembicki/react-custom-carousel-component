@@ -39,6 +39,7 @@ export default function Carousel({ dots, arrows, children }) {
       </ContentWrapper>
       <Dots>
         {dots &&
+          items?.length > 1 &&
           items?.map((i, index) => (
             <Dot key={index}>
               <input

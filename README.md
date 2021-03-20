@@ -2,6 +2,8 @@
 
 ## Getting Started
 
+You need to pass at least 2 items.
+
 ```JSX
 import React from "react";
 import ReactDOM from "react-dom";
