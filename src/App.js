@@ -16,11 +16,15 @@ const items = [
     name: "Third slide",
     imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7-cgVNYcz5yJ-STMuanEypltgbfcyzvnh0Q&usqp=CAU",
   },
+  {
+    name: "Four slide",
+    imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7-cgVNYcz5yJ-STMuanEypltgbfcyzvnh0Q&usqp=CAU",
+  },
 ];
 
 const App = () => (
   <div>
-    <Carousel items={items} />
+    <Carousel items={items} dots />
   </div>
 );
 
