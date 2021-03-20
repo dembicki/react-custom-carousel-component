@@ -59,17 +59,17 @@ const App = () => (
 ### Show arrows (default: false)
 
 ```JSX
- <Carousel
-    items={items}
-    arrows
- />
+<Carousel arrows={true} //default: false >
+  <p>item1</p>
+  <p>item1</p>
+</Carousel>
 ```
 
 ### Show dots navigation (default: false)
 
 ```JSX
- <Carousel
-    items={items}
-    dots
- />
+<Carousel dots={true} //default: false >
+  <p>item1</p>
+  <p>item1</p>
+</Carousel>
 ```
