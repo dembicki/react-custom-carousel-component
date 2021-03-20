@@ -5,7 +5,6 @@ import "./App.css";
 
 const App = () => (
   <>
-    <h1>Test</h1>
     <Carousel />
   </>
 );
