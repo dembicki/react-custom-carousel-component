@@ -14,7 +14,7 @@ The requirements for the carousel are:
 Following carousel features will be considered as advantages:
 
     Supports multiple slides on the screen
-    Supports infinite option
+    Supports infinite option ✔️
     Supports scrolling to a selected slide (like go to slide X) ✔️
     Any optimizations related to performance are welcome and appreciated!
 

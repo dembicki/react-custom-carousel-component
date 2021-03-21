@@ -8,6 +8,7 @@ export default function Carousel({
   autoplay,
   speed,
   infinite,
+  itemsPerSlide,
 }) {
   const [xPos, setXPos] = useState(0);
   const [currSlide, setCurrSlide] = useState(0);
@@ -20,9 +21,13 @@ export default function Carousel({
     autoplay: autoplay || false,
     speed: speed || 3000,
     infinite: infinite || false,
+    itemsPerSlide: 1,
   };
 
   useEffect(() => {
+    // const splittedItems = splitItems(items, itemsPerSlide);
+
+    // console.log("split", splitItems(items, 2));
     setCurrSlide(Math.abs(xPos / 100));
     if (settings.autoplay) {
       setTimeout(() => {
@@ -69,20 +74,40 @@ export default function Carousel({
     }
   };
 
+  const splitItems = (list, itemsPerSlide) => {
+    let idx = 0;
+    const result = [];
+    while (idx < list.length) {
+      if (idx % itemsPerSlide === 0) result.push([]);
+      result[result.length - 1]?.push(list[idx++]);
+    }
+    return result;
+  };
+
   return (
     <Wrapper>
       <ContentWrapper>
-        {items?.map((item, index) => (
-          <Item
-            key={index}
-            style={{ transform: `translateX(${xPos}%)` }}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            {item}
-          </Item>
-        ))}
+        {settings.itemsPerSlide <= 1
+          ? items?.map((item, index) => (
+              <Item
+                style={{ transform: `translateX(${xPos}%)` }}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+                {item}
+              </Item>
+            ))
+          : splittedItems?.map((item, index) => (
+              <Item
+                style={{ transform: `translateX(${xPos}%)` }}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+                {item}
+              </Item>
+            ))}
         {settings.arrows && (
           <>
             <Prev onClick={goLeft}>&larr;</Prev>
@@ -123,6 +148,7 @@ const ContentWrapper = styled.div`
 `;
 
 const Item = styled.div`
+  border: 1px solid red;
   text-align: center;
   width: 100%;
   height: 90vh;
@@ -132,8 +158,10 @@ const Item = styled.div`
   min-width: 100%;
   transition: 0.3s ease-in-out;
   > * {
-    max-width: 100%;
-    max-height: 90vh;
+    margin: 4 rem;
+    width: 300px;
+    height: 200px;
+    border: 1px solid blue;
   }
 `;
 
