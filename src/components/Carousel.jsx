@@ -1,15 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
-export default function Carousel({ dots, arrows, children }) {
+export default function Carousel({ dots, arrows, children, autoplay, speed }) {
   const [xPos, setXPos] = useState(0);
   const [currSlide, setCurrSlide] = useState(0);
   const [touchStart, setTouchStart] = React.useState(0);
   const [touchEnd, setTouchEnd] = React.useState(0);
   const items = children;
+  const contentRef = useRef(null);
+  const settings = {
+    dots: dots || false,
+    arrows: arrows || false,
+    autoplay: autoplay || false,
+    speed: speed || 3000,
+  };
 
   useEffect(() => {
     setCurrSlide(Math.abs(xPos / 100));
+    if (settings.autoplay) {
+      setTimeout(() => {
+        goRight();
+      }, settings.speed);
+    }
   }, [xPos]);
 
   const goLeft = () => {
@@ -44,7 +56,7 @@ export default function Carousel({ dots, arrows, children }) {
 
   return (
     <Wrapper>
-      <ContentWrapper>
+      <ContentWrapper ref={contentRef}>
         {items?.map((item, index) => (
           <Item
             key={index}
@@ -56,7 +68,7 @@ export default function Carousel({ dots, arrows, children }) {
             {item}
           </Item>
         ))}
-        {arrows && (
+        {settings.arrows && (
           <>
             <Prev onClick={goLeft}>&larr;</Prev>
             <Next onClick={goRight}>&rarr;</Next>
@@ -64,7 +76,7 @@ export default function Carousel({ dots, arrows, children }) {
         )}
       </ContentWrapper>
       <Dots>
-        {dots &&
+        {settings.dots &&
           items?.length > 1 &&
           items?.map((i, index) => (
             <Dot key={index}>
@@ -115,7 +127,7 @@ const Prev = styled.button`
   position: absolute;
   left: 0;
   top: 50%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
   border: none;
   width: 40px;
   height: 40px;

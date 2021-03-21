@@ -5,20 +5,25 @@ import "./App.css";
 
 const images = [{
   name: "image1",
-  imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpPVyc4LETd6GWTNZWJCuiBWoEI3w5yHZeoA&usqp=CAU",
+  imageURL: "https://images.unsplash.com/photo-1614598943701-92331ea9f894?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
 },
 {
   name: "image2",
-  imageURL: "https://images.unsplash.com/photo-1612831661941-254341b885e9?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=625&q=80",
+  imageURL: "https://images.unsplash.com/photo-1615076754255-351148b9d194?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
 },
 {
   name: "image3",
   imageURL: "https://iknurow.pl/wp-content/uploads/mt-sample-background.jpg",
-}];
+},
+{
+  name: "image4",
+  imageURL: "https://images.unsplash.com/photo-1614141852898-ab2d3d772519?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
+}
+];
 
 const App = () => (
   <>
-    <Carousel dots arrows >
+    <Carousel dots arrows>
       {images?.map(({name, imageURL}) =>(
         <img src={imageURL} alt={name} />
       ))}

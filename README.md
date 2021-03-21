@@ -56,12 +56,27 @@ const App = () => (
 
 ## Features:
 
+- Autoplay
 - Responsive
 - Supports any type of data
 - Using pure react.js
 - Supports touch swipes on mobile
 
 ## Parameters
+
+### Autoplay
+
+You can specify autoplay speed in ms.
+
+```JSX
+<Carousel
+autoplay={true} /* default: false */
+speed={1000} /* default: 3000 */
+>
+  <p>item1</p>
+  <p>item2</p>
+</Carousel>
+```
 
 ### Show arrows
 
