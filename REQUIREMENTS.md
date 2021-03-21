@@ -9,7 +9,7 @@ The requirements for the carousel are:
     Must work for mobile and desktop devices ✔️
     Must support swipes ✔️
     Must work for any HTML content ✔️
-    Must be animated, finger-following  swipes, you can use a multi-picture post in Instagram as a reference.
+    Must be animated, finger-following  swipes, you can use a multi-picture post in Instagram as a reference. ✔️
 
 Following carousel features will be considered as advantages:
 
