@@ -62,7 +62,7 @@ const App = () => (
 - Using pure react.js
 - Supports touch swipes on mobile
 
-## Parameters
+## Settings
 
 ### Autoplay
 
