@@ -78,16 +78,17 @@ export default function Carousel({
 
   return (
     <Wrapper>
-      <ContentWrapper>
+      <ContentWrapper
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {items?.map((item, index) => (
           <Item
             key={index}
             amount={(1 / settings.itemsPerSlide) * 100}
             style={{ transform: `translateX(${xPos}%)` }}
             //TODO: move this to content wrapper would be a better idea for more than 1 image per slide
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
           >
             {item}
           </Item>
@@ -146,7 +147,7 @@ const Item = styled.div`
   justify-content: center;
   align-items: center;
   transition: 0.3s ease-in-out;
-  > * {
+  > img {
     max-width: 100%;
     max-height: 100%;
     /* max-height: auto; */

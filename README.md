@@ -54,6 +54,49 @@ const App = () => (
 
 ```
 
+## Make testimonials slider
+
+```JSX
+import React from "react";
+import ReactDOM from "react-dom";
+import Carousel from "./components/Carousel.jsx";
+import "./App.css";
+
+const testimonials = [{
+  name: "Damian",
+  review: "Great developer, highly recommended!",
+  stars: 4.5,
+},
+{
+  name: "Monica",
+  review: "Work with this developer is a pleasure 💕",
+  stars: 5,
+},
+{
+  name: "David",
+  review: "Professional work.",
+  stars: 4.5,
+},
+
+
+];
+
+const App = () => (
+  <>
+    <Carousel arrows dots infinite itemsPerSlide={1}>
+      {testimonials?.map(({ name, review, stars }) => (
+        <div>
+          <h2>{name}</h2>
+          <p>{review}</p>
+          <b>Review: </b>
+          <span>{stars}/5 ⭐</span>
+        </div>
+      ))}
+    </Carousel>
+  </>
+);
+```
+
 ## Features:
 
 - Autoplay
