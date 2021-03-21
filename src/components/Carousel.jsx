@@ -125,6 +125,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  overflow-y: hidden;
 `;
 
 const ContentWrapper = styled.div`
@@ -132,23 +133,23 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 90vh;
 `;
 
 const Item = styled.div`
-  flex-basis: auto;
+  padding: 1rem;
   text-align: center;
-  width: 100%;
-  min-width: ${(props) => props.amount}%; //make it variable 1/ itemsPerSlide
-  min-height: 80vh;
-  height: 100%;
+  min-width: ${(props) => props.amount}%;
+  height: auto;
   display: flex;
+  max-height: 1000px;
   justify-content: center;
   align-items: center;
   transition: 0.3s ease-in-out;
   > * {
-    margin: 1rem;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    /* max-height: auto; */
   }
 `;
 
@@ -162,6 +163,10 @@ const Prev = styled.button`
   width: 40px;
   height: 40px;
   z-index: 2;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+  }
 `;
 
 const Next = styled.button`
@@ -174,11 +179,16 @@ const Next = styled.button`
   width: 40px;
   height: 40px;
   z-index: 2;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+  }
 `;
 
 const Dots = styled.nav`
   padding: 2rem;
   display: flex;
+  flex: 10vh;
   align-items: center;
   margin: 0 auto;
   width: 200px;
