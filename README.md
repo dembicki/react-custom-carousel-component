@@ -148,3 +148,12 @@ speed={1000} /* default: 3000 */
   <p>item2</p>
 </Carousel>
 ```
+
+### Items per page
+
+```JSX
+<Carousel itemsPerSlide={3}/* default: 1 */ >
+  <p>item1</p>
+  <p>item2</p>
+</Carousel>
+```
