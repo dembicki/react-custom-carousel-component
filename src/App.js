@@ -35,7 +35,7 @@ const images = [{
 
 const App = () => (
   <>
-    <Carousel arrows dots infinite itemsPerSlide={2}>
+    <Carousel arrows dots infinite itemsPerSlide={3}>
       {images?.map(({ name, imageURL }) => (
         <img src={imageURL} alt={name} />
       ))}

@@ -126,6 +126,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   overflow: hidden;
   overflow-y: hidden;
+  height: 100vh;
 `;
 
 const ContentWrapper = styled.div`
@@ -185,9 +186,10 @@ const Next = styled.button`
 `;
 
 const Dots = styled.nav`
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
-  flex: 10vh;
+  position: relative;
+  bottom: 100px;
   align-items: center;
   margin: 0 auto;
   width: 200px;
