@@ -15,7 +15,7 @@ const App = () => (
     <Carousel dots arrows>
       <p>test</p>
       <p>test2</p>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpPVyc4LETd6GWTNZWJCuiBWoEI3w5yHZeoA&usqp=CAU" alt="image" />
+      <img src="https://images.unsplash.com/photo-1614598943701-92331ea9f894?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max" alt="image" />
     </Carousel>
   </>
 );
@@ -31,15 +31,15 @@ import Carousel from "./components/Carousel.jsx";
 
 const images = [{
   name: "image1",
-  imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpPVyc4LETd6GWTNZWJCuiBWoEI3w5yHZeoA&usqp=CAU",
+  imageURL: "https://images.unsplash.com/photo-1614598943701-92331ea9f894?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
 },
 {
   name: "image2",
-  imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpPVyc4LETd6GWTNZWJCuiBWoEI3w5yHZeoA&usqp=CAU",
+  imageURL: "https://images.unsplash.com/photo-1615076754255-351148b9d194?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
 },
 {
   name: "image3",
-  imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpPVyc4LETd6GWTNZWJCuiBWoEI3w5yHZeoA&usqp=CAU",
+  imageURL: "https://images.unsplash.com/photo-1593642634367-d91a135587b5?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
 }];
 
 const App = () => (
