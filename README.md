@@ -61,6 +61,7 @@ const App = () => (
 - Supports any type of data
 - Using pure react.js
 - Supports touch swipes on mobile
+- Infinite option
 
 ## Settings
 
@@ -91,6 +92,15 @@ speed={1000} /* default: 3000 */
 
 ```JSX
 <Carousel dots={true} /* default: false */ >
+  <p>item1</p>
+  <p>item2</p>
+</Carousel>
+```
+
+### Enable inifinite option
+
+```JSX
+<Carousel infinite={true} /* default: false */ >
   <p>item1</p>
   <p>item2</p>
 </Carousel>

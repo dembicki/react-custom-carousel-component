@@ -1,18 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
-export default function Carousel({ dots, arrows, children, autoplay, speed }) {
+export default function Carousel({
+  dots,
+  arrows,
+  children,
+  autoplay,
+  speed,
+  infinite,
+}) {
   const [xPos, setXPos] = useState(0);
   const [currSlide, setCurrSlide] = useState(0);
   const [touchStart, setTouchStart] = React.useState(0);
   const [touchEnd, setTouchEnd] = React.useState(0);
   const items = children;
-  const contentRef = useRef(null);
   const settings = {
     dots: dots || false,
     arrows: arrows || false,
     autoplay: autoplay || false,
     speed: speed || 3000,
+    inifinite: infinite || false,
   };
 
   useEffect(() => {
@@ -25,11 +32,19 @@ export default function Carousel({ dots, arrows, children, autoplay, speed }) {
   }, [xPos]);
 
   const goLeft = () => {
-    xPos === 0 ? setXPos(-100 * (items.length - 1)) : setXPos(xPos + 100);
+    if (settings.inifinite) {
+      xPos === 0 ? setXPos(-100 * (items.length - 1)) : setXPos(xPos + 100);
+    } else {
+      xPos === 0 ? null : setXPos(xPos + 100);
+    }
   };
 
   const goRight = () => {
-    xPos === -100 * (items.length - 1) ? setXPos(0) : setXPos(xPos - 100);
+    if (settings.infinite) {
+      xPos === -100 * (items.length - 1) ? setXPos(0) : setXPos(xPos - 100);
+    } else {
+      xPos === -100 * (items.length - 1) ? null : setXPos(xPos - 100);
+    }
   };
 
   const GoToSlide = (index) => {
