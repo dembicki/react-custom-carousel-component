@@ -71,7 +71,7 @@ export default function Carousel({
 
   return (
     <Wrapper>
-      <ContentWrapper ref={contentRef}>
+      <ContentWrapper>
         {items?.map((item, index) => (
           <Item
             key={index}
