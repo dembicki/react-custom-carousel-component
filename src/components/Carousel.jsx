@@ -21,13 +21,10 @@ export default function Carousel({
     autoplay: autoplay || false,
     speed: speed || 3000,
     infinite: infinite || false,
-    itemsPerSlide: 1,
+    itemsPerSlide: itemsPerSlide || 1,
   };
 
   useEffect(() => {
-    // const splittedItems = splitItems(items, itemsPerSlide);
-
-    // console.log("split", splitItems(items, 2));
     setCurrSlide(Math.abs(xPos / 100));
     if (settings.autoplay) {
       setTimeout(() => {
@@ -38,7 +35,9 @@ export default function Carousel({
 
   const goLeft = () => {
     if (settings.infinite) {
-      xPos === 0 ? setXPos(-100 * (items.length - 1)) : setXPos(xPos + 100);
+      xPos === 0
+        ? setXPos(-100 * (items.length - settings.itemsPerSlide))
+        : setXPos(xPos + 100);
     } else {
       xPos === 0 ? null : setXPos(xPos + 100);
     }
@@ -46,14 +45,17 @@ export default function Carousel({
 
   const goRight = () => {
     if (settings.infinite) {
-      xPos === -100 * (items.length - 1) ? setXPos(0) : setXPos(xPos - 100);
+      xPos === -100 * (items.length - settings.itemsPerSlide)
+        ? setXPos(0)
+        : setXPos(xPos - 100);
     } else {
       xPos === -100 * (items.length - 1) ? null : setXPos(xPos - 100);
     }
   };
 
+  //TODO: fix for slide checked
   const GoToSlide = (index) => {
-    setXPos(index * -100);
+    setXPos((index * -100 * settings.itemsPerSlide) / settings.itemsPerSlide);
   };
 
   const handleTouchStart = (e) => {
@@ -74,40 +76,22 @@ export default function Carousel({
     }
   };
 
-  const splitItems = (list, itemsPerSlide) => {
-    let idx = 0;
-    const result = [];
-    while (idx < list.length) {
-      if (idx % itemsPerSlide === 0) result.push([]);
-      result[result.length - 1]?.push(list[idx++]);
-    }
-    return result;
-  };
-
   return (
     <Wrapper>
       <ContentWrapper>
-        {settings.itemsPerSlide <= 1
-          ? items?.map((item, index) => (
-              <Item
-                style={{ transform: `translateX(${xPos}%)` }}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-              >
-                {item}
-              </Item>
-            ))
-          : splittedItems?.map((item, index) => (
-              <Item
-                style={{ transform: `translateX(${xPos}%)` }}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-              >
-                {item}
-              </Item>
-            ))}
+        {items?.map((item, index) => (
+          <Item
+            key={index}
+            amount={(1 / settings.itemsPerSlide) * 100}
+            style={{ transform: `translateX(${xPos}%)` }}
+            //TODO: move this to content wrapper would be a better idea for more than 1 image per slide
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            {item}
+          </Item>
+        ))}
         {settings.arrows && (
           <>
             <Prev onClick={goLeft}>&larr;</Prev>
@@ -117,18 +101,21 @@ export default function Carousel({
       </ContentWrapper>
       <Dots>
         {settings.dots &&
-          items?.length > 1 &&
-          items?.map((i, index) => (
-            <Dot key={index}>
-              <input
-                id={`slide-${index + 1}`}
-                checked={currSlide === index ? true : false}
-                onChange={() => GoToSlide(index)}
-                type="radio"
-              />
-              <label htmlFor={`slide-${index + 1}`}></label>
-            </Dot>
-          ))}
+          items
+            .filter(
+              (_, index) => index < items.length - settings.itemsPerSlide + 1
+            )
+            ?.map((i, index) => (
+              <Dot key={index}>
+                <input
+                  id={`slide-${index + 1}`}
+                  checked={currSlide === index ? true : false}
+                  onChange={() => GoToSlide(index)}
+                  type="radio"
+                />
+                <label htmlFor={`slide-${index + 1}`}></label>
+              </Dot>
+            ))}
       </Dots>
     </Wrapper>
   );
@@ -144,24 +131,24 @@ const ContentWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
-  width: 100vw;
+  width: 100%;
 `;
 
 const Item = styled.div`
-  border: 1px solid red;
+  flex-basis: auto;
   text-align: center;
   width: 100%;
-  height: 90vh;
+  min-width: ${(props) => props.amount}%; //make it variable 1/ itemsPerSlide
+  min-height: 80vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 100%;
   transition: 0.3s ease-in-out;
   > * {
-    margin: 4 rem;
-    width: 300px;
-    height: 200px;
-    border: 1px solid blue;
+    margin: 1rem;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -190,6 +177,7 @@ const Next = styled.button`
 `;
 
 const Dots = styled.nav`
+  padding: 2rem;
   display: flex;
   align-items: center;
   margin: 0 auto;
