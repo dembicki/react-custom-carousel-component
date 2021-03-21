@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 export default function Carousel({
@@ -19,7 +19,7 @@ export default function Carousel({
     arrows: arrows || false,
     autoplay: autoplay || false,
     speed: speed || 3000,
-    inifinite: infinite || false,
+    infinite: infinite || false,
   };
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function Carousel({
   }, [xPos]);
 
   const goLeft = () => {
-    if (settings.inifinite) {
+    if (settings.infinite) {
       xPos === 0 ? setXPos(-100 * (items.length - 1)) : setXPos(xPos + 100);
     } else {
       xPos === 0 ? null : setXPos(xPos + 100);

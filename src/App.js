@@ -23,7 +23,7 @@ const images = [{
 
 const App = () => (
   <>
-    <Carousel dots arrows infinite autoplay>
+    <Carousel arrows infinite>
       {images?.map(({name, imageURL}) =>(
         <img src={imageURL} alt={name} />
       ))}
