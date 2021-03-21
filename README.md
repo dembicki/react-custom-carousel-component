@@ -45,7 +45,7 @@ const images = [{
 const App = () => (
   <>
     <Carousel dots arrows >
-      {images?.map(({name, imageURL}) => (
+      {images?.map(({name, imageURL}, index) => (
         <img key={index} src={imageURL} alt={name} />
       ))}
     </Carousel>
