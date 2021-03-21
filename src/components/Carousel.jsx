@@ -15,13 +15,14 @@ export default function Carousel({
   const [touchStart, setTouchStart] = React.useState(0);
   const [touchEnd, setTouchEnd] = React.useState(0);
   const items = children;
+  const isMobile = window.innerWidth <= 900 ? true : false;
   const settings = {
     dots: dots || false,
     arrows: arrows || false,
     autoplay: autoplay || false,
     speed: speed || 3000,
     infinite: infinite || false,
-    itemsPerSlide: itemsPerSlide || 1,
+    itemsPerSlide: !isMobile ? itemsPerSlide || 1 : 1,
   };
 
   useEffect(() => {
@@ -53,7 +54,6 @@ export default function Carousel({
     }
   };
 
-  //TODO: fix for slide checked
   const GoToSlide = (index) => {
     setXPos((index * -100 * settings.itemsPerSlide) / settings.itemsPerSlide);
   };
@@ -88,7 +88,6 @@ export default function Carousel({
             key={index}
             amount={(1 / settings.itemsPerSlide) * 100}
             style={{ transform: `translateX(${xPos}%)` }}
-            //TODO: move this to content wrapper would be a better idea for more than 1 image per slide
           >
             {item}
           </Item>
@@ -150,7 +149,6 @@ const Item = styled.div`
   > img {
     max-width: 100%;
     max-height: 100%;
-    /* max-height: auto; */
   }
 `;
 

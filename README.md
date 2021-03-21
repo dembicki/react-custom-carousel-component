@@ -151,6 +151,8 @@ speed={1000} /* default: 3000 */
 
 ### Items per page
 
+It's always 1 item per page for mobile devices
+
 ```JSX
 <Carousel itemsPerSlide={3}/* default: 1 */ >
   <p>item1</p>
