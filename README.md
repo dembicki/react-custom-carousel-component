@@ -1,5 +1,7 @@
 # react-custom-carousel-component
 
+![Preview](https://imgur.com/ChzowRB.gif)
+
 ## Getting Started
 
 You need to pass at least 2 items.
