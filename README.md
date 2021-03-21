@@ -105,6 +105,7 @@ const App = () => (
 - Using pure react.js
 - Supports touch swipes on mobile
 - Infinite option
+- Many items per page available
 
 ## Settings
 
