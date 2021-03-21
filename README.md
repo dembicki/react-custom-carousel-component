@@ -44,7 +44,7 @@ const images = [{
 
 const App = () => (
   <>
-    <Carousel dots arrows >
+    <Carousel dots arrows autoplay speed={1000} infinite>
       {images?.map(({name, imageURL}, index) => (
         <img key={index} src={imageURL} alt={name} />
       ))}
